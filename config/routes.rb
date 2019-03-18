@@ -3,4 +3,7 @@ Rails.application.routes.draw do
 
   # get /
   root 'application#index'
+
+  # post /text
+  post '/text', to: 'application#sendtext'
 end
