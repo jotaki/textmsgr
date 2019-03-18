@@ -1,9 +1,13 @@
 class ApplicationController < ActionController::Base
-  def login
+  def index
   end
 
-  def post_login
-    @user = User.get(params.fetch('name'), params.fetch('phone_number'))
-    render 'post_login', locals: { user: @user }
+  def sendtext
+    name = params.fetch('name')
+    number = params.fetch('phone_number')
+    msg = params.fetch('message')
+
+    if Phone
   end
+
 end
