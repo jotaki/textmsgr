@@ -24,12 +24,13 @@ body {
 div.login_form {
   margin-top: 20%;
   margin-right: 50%;
-  text-align: right;
+  margin-left: 30%;
 }
 
 div.login_form label {
   font-weight: bold;
   font-size: 12pt;
+  display: block;
 }
 
 div.login_form input[type=text] {
