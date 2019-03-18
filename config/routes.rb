@@ -6,4 +6,10 @@ Rails.application.routes.draw do
 
   # post /text
   post '/text', to: 'application#sendtext'
+
+  # post incoming_text
+  post '/incoming_text', to: 'application#incoming_text'
+
+  # get /text
+  get '/text', to: 'application#index'
 end

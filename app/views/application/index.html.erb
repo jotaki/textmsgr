@@ -13,3 +13,19 @@
     <%= button_tag 'Reset', type: 'reset' %>
   <%- end -%>
 </div>
+<table align="center">
+  <thead>
+    <th>Name</th>
+    <th>Phone Number</th>
+    <th>Message</th>
+  </thead>
+  <tbody>
+    <%- textlogs.each do |textlog| -%>
+    <tr>
+      <td><%= textlog.name %></td>
+      <td><%= textlog.phone %></td>
+      <td><%= textlog.message %></td>
+    </tr>
+    <%- end -%>
+  </tbody>
+</table>

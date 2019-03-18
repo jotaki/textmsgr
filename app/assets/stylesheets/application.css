@@ -36,3 +36,7 @@ div.login_form label {
 div.login_form input[type=text] {
   margin-bottom: 24px;
 }
+
+table {
+  margin-top: 25px;
+}
