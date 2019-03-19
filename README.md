@@ -1,24 +1,6 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Simple twilio application text messanging
+* Requires setting webhook in twilio console to the appropriate URL. ```http://host.com/incoming_text```
+* Configure appropriate settings in .env (See dotenv-example for example)
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
