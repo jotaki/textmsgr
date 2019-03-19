@@ -13,7 +13,16 @@ class ApplicationController < ActionController::Base
     log = Textlog.new(name: name, phone: number, message: msg)
     log.save!
 
-    render :index
+    twclnt = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN'])
+    msg = twclnt.messages.create(
+      body: "#{log.name} sent \"#{log.message}\"",
+      to: log.phone,
+      from: ENV['TWILIO_PHONE_NUMBER'])
+
+    render :index, locals: { textlogs: Textlog.order('created_at DESC') }
+  rescue ActiveRecord::RecordInvalid => e
+    flash[:notice] = e
+    render :index, locals: { textlogs: Textlog.order('created_at DESC') }
   end
 
   def incoming_text
