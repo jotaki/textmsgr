@@ -115,6 +115,7 @@ GEM
     nokogiri (1.10.1)
       mini_portile2 (~> 2.4.0)
     phonelib (0.6.30)
+    phony (2.17.0)
     public_suffix (3.0.3)
     puma (3.12.0)
     rack (2.0.6)
@@ -216,6 +217,7 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
   phonelib
+  phony
   puma (~> 3.11)
   rails (~> 5.2.2, >= 5.2.2.1)
   sass-rails (~> 5.0)

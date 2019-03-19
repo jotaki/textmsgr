@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
     number = params.fetch('phone_number')
     msg = params.fetch('message')
 
-    if Phonelib.valid? number
+    if Phony.plausible? number
       log = Textlog.new(name: name, phone: number, message: msg)
       log.save!
 
