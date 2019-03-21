@@ -8,12 +8,12 @@ class ApplicationController < ActionController::Base
 
   def sendtext
     flash[:notice] = nil
-    name = params.fetch('name')
-    number = params.fetch('phone_number')
-    msg = params.fetch('message')
+    @frmname = params.fetch('name')
+    @number = params.fetch('phone_number')
+    @msg = params.fetch('message')
 
-    if Phony.plausible? number
-      log = Textlog.new(name: name, phone: number, message: msg)
+    if Phony.plausible? @number
+      log = Textlog.new(name: @frmname, phone: @number, message: @msg)
       log.save!
 
       twclnt = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN'])
@@ -22,14 +22,31 @@ class ApplicationController < ActionController::Base
         to: log.phone,
         from: ENV['TWILIO_PHONE_NUMBER'])
 
-      render :index, locals: { textlogs: Textlog.order('created_at DESC') }
+      respond_to do |format|
+        format.html do
+          render :index, locals: { textlogs: Textlog.order('created_at DESC') }
+        end
+        format.js
+      end
     else
       flash[:notice] = "Number is not valid"
-      render :index, locals: { textlogs: Textlog.order('created_at DESC') }
+      respond_to do |format|
+        format.html do
+          render :index, locals: { textlogs: Textlog.order('created_at DESC') }
+        end
+
+        format.js
+      end
     end
   rescue ActiveRecord::RecordInvalid => e
-    flash[:notice] = e
-    render :index, locals: { textlogs: Textlog.order('created_at DESC') }
+    flash[:notice] = e.to_s
+    respond_to do |format|
+      format.html do
+        render :index, locals: { textlogs: Textlog.order('created_at DESC') }
+      end
+      
+      format.js
+    end
   end
 
   def incoming_text

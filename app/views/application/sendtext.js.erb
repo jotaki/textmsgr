@@ -1,0 +1,6 @@
+<% unless flash[:notice].nil? %>
+  $('#flash_notice').text('<%= j flash[:notice] -%>');
+<% else %>
+  $('#flash_notice').text('');
+  $('tbody tr:first').before('<tr><td><%= j @frmname -%></td><td><%= j @number -%></td><td><%= j @msg -%></td></tr>');
+<% end %>

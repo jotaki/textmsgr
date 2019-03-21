@@ -15,5 +15,6 @@ module Txtmsgr
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+    config.web_console.whitelisted_ips = %w{ 192.168.14.0/24 }
   end
 end

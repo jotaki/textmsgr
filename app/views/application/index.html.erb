@@ -1,13 +1,15 @@
 <% content_for :head do %>
-  <meta http-equiv="refresh" content="120" />
+  <!-- meta http-equiv="refresh" content="120" /-->
 <% end %>
 
+<div id="flash_notice">
 <%- unless flash[:notice].nil? -%>
   <%= flash[:notice] %>
 <%- end -%>
+</div>
 
 <div class="login_form">
-  <%= form_tag '/text', method: 'post' do %>
+  <%= form_tag '/text', method: 'post', remote: true do %>
     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 
     <%= label_tag :name, 'Name:' %>
@@ -21,7 +23,7 @@
     <%= button_tag 'Reset', type: 'reset' %>
   <%- end -%>
 </div>
-<table align="center">
+<table align="center" id="textlogs">
   <thead>
     <th>Name</th>
     <th>Phone Number</th>
