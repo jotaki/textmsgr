@@ -3,4 +3,7 @@
 <% else %>
   $('#flash_notice').text('');
   $('tbody tr:first').before('<tr><td><%= j @frmname -%></td><td><%= j @number -%></td><td><%= j @msg -%></td></tr>');
+  $('#name').val('');
+  $('#phone_number').val('');
+  $('#message').val('');
 <% end %>
