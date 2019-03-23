@@ -12,4 +12,8 @@ Rails.application.routes.draw do
 
   # get /text
   get '/text', to: 'application#index'
+
+  # get /phone_records.js
+  get '/phone_records.js', to: 'application#phone_records'
+  
 end

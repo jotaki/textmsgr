@@ -15,3 +15,12 @@
 //= require turbolinks
 //= require_tree .
 //= require jquery
+
+$(function() {
+  setTimeout(updatePhoneRecords, 10000);
+});
+
+function updatePhoneRecords() {
+  $.getScript('/phone_records.js')
+  setTimeout(updatePhoneRecords, 10000);
+}

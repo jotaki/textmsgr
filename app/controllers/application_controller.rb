@@ -50,7 +50,15 @@ class ApplicationController < ActionController::Base
   end
 
   def incoming_text
-    log = Textlog.new(name: 'Unknown', phone: params.fetch('From'), message: params.fetch('Body'))
+    log = Textlog.new(name: 'Unknown', phone: params.fetch('To'), message: params.fetch('Body'))
     log.save
+  end
+
+  def phone_records
+    @logs = Textlog.order('created_at ASC')
+
+    respond_to do |format|
+      format.js
+    end
   end
 end

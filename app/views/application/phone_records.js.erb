@@ -1,0 +1,5 @@
+$('tbody').text('');
+
+<% @logs.each do |log| %>
+    $('tbody').after('<tr><td><%= j log.name -%></td><td><%= j log.phone -%></td><td><%= j log.message -%></td></tr>');
+<% end %>
