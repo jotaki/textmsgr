@@ -10,5 +10,7 @@
 bundle install
 bundle exec rake db:migrate
 copy dotenv-example to .env and modify accordingly
+rails server
+ngrok http 3000 # new terminal
 setup appropriate URL in Twilio webhook.
 ```
